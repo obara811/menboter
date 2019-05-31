@@ -10,7 +10,7 @@ class LinebotController < ApplicationController
     events = client.parse_events_from(body)
 
     puts body.inspect
-    puts "@@@@@@@@@@@@@@@"
+    puts "@@@@@@@@@@@@@@@@@@@@@@@"
     puts events.inspect
 
     events.each { |event|
