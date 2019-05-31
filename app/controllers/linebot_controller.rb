@@ -1,7 +1,6 @@
 class LinebotController < ApplicationController
   def callback
     body = request.body.read
-    puts body.inspect
     
     signature = request.env['HTTP_X_LINE_SIGNATURE']
     unless client.validate_signature(body, signature)
@@ -9,6 +8,11 @@ class LinebotController < ApplicationController
     end
 
     events = client.parse_events_from(body)
+
+    puts body.inspect
+    puts "@@@@@@@@@@@@@@@"
+    puts events.inspect
+
     events.each { |event|
       case event
       when Line::Bot::Event::Message
