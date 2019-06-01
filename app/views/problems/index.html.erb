@@ -1,0 +1,28 @@
+<%= form_with model: @problem, local: true do |f| %>
+  <%= f.text_field :title %>
+  <%= f.text_area :answer %>
+  <%= f.submit %>
+<% end %>
+
+<% @problems.each do |word| %>
+  <div class="wordbox">
+    <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
+      <div style="cursor:pointer;">
+        <span class="wordTitle">▼ <%= word.title %></span>:
+      </div>
+    </div>
+
+    <div id="menu<%= word.id %>" style="display:none;clear:both;">
+      <%= form_with model: word, local: true do |f| %>
+        <%= f.label :title %>
+        <%= f.text_field :title %>
+
+        <%= f.label :answer %>
+        <%= f.text_area :answer, size:"20x6" %>
+        <%= f.submit "編集" %>
+      <% end %>
+      <%= link_to "削除", word, method: :delete, data: { confirm: "You sure?" } %>
+    </div>
+  </div>
+<% end %>
+
