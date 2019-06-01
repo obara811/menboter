@@ -18,10 +18,10 @@ class LinebotController < ApplicationController
         case event.type
         when Line::Bot::Event::MessageType::Text
           if event.message['text'] == "一覧"
-            messages = Problem.all.pluck(:title)
+            messages = Problem.all
             reply=""
             messages.each do |m|
-              reply += m.id + "&nbsp;" + m + "\n"
+              reply += m.id.to_s + "&nbsp;" + m.title + "\n"
             end 
             message = {
               type: 'text',
