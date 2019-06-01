@@ -24,7 +24,7 @@ class LinebotController < ApplicationController
               message += m + "\n"
             end 
             response = client.reply_message(event['replyToken'], message)
-
+            p response
           elsif
             message = {
               type: 'text',
