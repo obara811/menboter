@@ -32,11 +32,19 @@ class LinebotController < ApplicationController
           elsif
             reply = Problem.find_by(id: event.message['text'])
             puts reply
-            message = {
-              type: 'text',
-              text: event.message['text']
-            }
-            response = client.reply_message(event['replyToken'], message)
+            if reply
+              message = {
+                type: 'text',
+                text: reply.answer
+              }
+              response = client.reply_message(event['replyToken'], message)
+            else
+              message = {
+                type: 'text',
+                text: event.message['text'] + "は見つからないよ"
+              }
+              response = client.reply_message(event['replyToken'], message)
+            end
             
           end
         end
