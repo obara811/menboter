@@ -19,10 +19,14 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           if event.message['text'] == "一覧"
             messages = Problem.all.pluck(:title)
-            message=""
+            reply=""
             messages.each do |m|
-              message += m + "\n"
+              reply += m + "\n"
             end 
+            message = {
+              type: 'text',
+              text: reply
+            }
             response = client.reply_message(event['replyToken'], message)
             p response
           elsif
