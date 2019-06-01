@@ -21,7 +21,7 @@ class LinebotController < ApplicationController
             messages = Problem.all
             reply=""
             messages.each do |m|
-              reply += m.id.to_s + "&nbsp;" + m.title + "\n"
+              reply += m.id.to_s + " " + m.title + "\n"
             end 
             message = {
               type: 'text',
