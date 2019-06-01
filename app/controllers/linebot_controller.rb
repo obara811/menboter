@@ -23,14 +23,16 @@ class LinebotController < ApplicationController
             messages.each do |m|
               message += m + "\n"
             end 
+            response = client.reply_message(event['replyToken'], message)
 
+          elsif
+            message = {
+              type: 'text',
+              text: event.message['text']
+            }
+            response = client.reply_message(event['replyToken'], message)
+            p response
           end
-          message = {
-            type: 'text',
-            text: event.message['text']
-          }
-          response = client.reply_message(event['replyToken'], message)
-          p response
         end
       end
     }
