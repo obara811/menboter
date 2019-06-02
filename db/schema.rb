@@ -10,10 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_06_02_040952) do
+ActiveRecord::Schema.define(version: 2019_06_02_041530) do
 
   create_table "logs", force: :cascade do |t|
-    t.integer "user_id"
+    t.integer "user_id", limit: 8, null: false
     t.text "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
