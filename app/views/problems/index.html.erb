@@ -1,10 +1,10 @@
 <%= form_with model: @problem, local: true do |f| %>
   <div class="uk-margin">
-    <%= f.label :title %>
+    <%= f.label :title, class: "uk-label" %>
   　<%= f.text_field :title, class: "uk-input" %>
   </div>
   <div class="uk-margin">
-    <%= f.label :answer %>
+    <%= f.label :answer, class: "uk-label" %>
     <%= f.text_area :answer, class: "uk-textarea" %>
   </div>
   <div class="uk-margin">
