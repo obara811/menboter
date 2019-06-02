@@ -31,9 +31,9 @@
           <%= f.label :answer %>
           <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
         </div>
-        <%= f.button "編集", class: "uk-button uk-button-default" %>
+        <%= f.button "編集", class: "uk-button uk-button-default uk-button-danger" %>
       <% end %>
-      <%= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
+      <%#= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
     </div>
   </div>
 <% end %>
