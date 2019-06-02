@@ -18,13 +18,14 @@ class LinebotController < ApplicationController
         case event.type
 
         when Line::Bot::Event::MessageType::Text
+          log = Log.new(user_id: event.message['id'], text: event.message['text'])
+          log.save
           if event.message['text'] == "一覧"
-            puts "@@@@@@@@@@@@@@@"
-            puts event.message.inspect
+
             messages = Problem.all.order("id")
             reply=""
             messages.each do |m|
-              reply += m.id.to_s + " " + m.title + "\n"
+              reply += m.id.to_s + " " + m.title + event.message['id'] + "\n"
             end
             reply += "見たい番号を半角数字で教えてね。"
             message = {
