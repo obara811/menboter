@@ -22,7 +22,8 @@ class LinebotController < ApplicationController
             reply=""
             messages.each do |m|
               reply += m.id.to_s + " " + m.title + "\n"
-            end 
+            end
+            reply += "見たい番号を半角数字で教えてね。"
             message = {
               type: 'text',
               text: reply
