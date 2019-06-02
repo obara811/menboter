@@ -1,7 +1,11 @@
 <%= form_with model: @problem, local: true do |f| %>
-  <%= f.text_field :title %>
-  <%= f.text_area :answer %>
-  <%= f.submit %>
+  <div class="uk-margin">
+    <%= f.text_field :title, class: "uk-input" %>
+    </div>
+  <%= f.text_area :answer, class: "uk-textarea" %>
+  <div class="uk-margin">
+    <%= f.button "作成", class: "uk-button uk-button-default uk-width-1-1" %>
+  </div>
 <% end %>
 
 <% @problems.each do |word| %>
@@ -14,14 +18,18 @@
 
     <div id="menu<%= word.id %>" style="display:none;clear:both;">
       <%= form_with model: word, local: true do |f| %>
-        <%= f.label :title %>
-        <%= f.text_field :title %>
-<br>
-        <%= f.label :answer %>
-        <%= f.text_area :answer, size:"20x6" %>
-        <%= f.submit "編集" %>
+        <div class="uk-margin">
+          <%= f.label :title %>
+          <%= f.text_field :title, class: "uk-input" %>
+        </div>
+
+        <div class="uk-margin">
+          <%= f.label :answer %>
+          <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
+        </div>
+        <%= f.button "編集", class: "uk-button uk-button-default" %>
       <% end %>
-      <%= link_to "削除", word, method: :delete, data: { confirm: "You sure?" } %>
+      <%= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
     </div>
   </div>
 <% end %>

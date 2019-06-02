@@ -1,3 +1,9 @@
+GIT
+  remote: git://github.com/nicbet/rails-uikit.git
+  revision: 95f9ea3b22caf3fcf1825d331b592c749e5b7065
+  specs:
+    rails-uikit (3.0.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -210,6 +216,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.3)
+  rails-uikit!
   sass-rails (~> 5.0)
   selenium-webdriver
   spring
