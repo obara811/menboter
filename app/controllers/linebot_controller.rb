@@ -16,6 +16,8 @@ class LinebotController < ApplicationController
       case event
       when Line::Bot::Event::Message
         case event.type
+        puts event.type.inspect
+        puts "@@@@@@@@@@@@@@@"
         when Line::Bot::Event::MessageType::Text
           if event.message['text'] == "一覧"
             messages = Problem.all.order("id")
