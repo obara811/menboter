@@ -1,8 +1,12 @@
 <%= form_with model: @problem, local: true do |f| %>
   <div class="uk-margin">
-    <%= f.text_field :title, class: "uk-input" %>
-    </div>
-  <%= f.text_area :answer, class: "uk-textarea" %>
+    <%= f.label :title %>
+  　<%= f.text_field :title, class: "uk-input" %>
+  </div>
+  <div class="uk-margin">
+    <%= f.label :answer %>
+    <%= f.text_area :answer, class: "uk-textarea" %>
+  </div>
   <div class="uk-margin">
     <%= f.button "作成", class: "uk-button uk-button-default uk-width-1-1" %>
   </div>
