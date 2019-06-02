@@ -25,7 +25,7 @@ class LinebotController < ApplicationController
             messages = Problem.all.order("id")
             reply=""
             messages.each do |m|
-              reply += m.id.to_s + " " + m.title + event.message['id'] + "\n"
+              reply += m.id.to_s + " " + m.title  + "\n"
             end
             reply += "見たい番号を半角数字で教えてね。"
             message = {
