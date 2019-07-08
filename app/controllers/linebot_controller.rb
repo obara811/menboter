@@ -43,8 +43,6 @@ class LinebotController < ApplicationController
             puts reply.inspect
             puts "#######################"
             if reply
-
-
               message = {
                 type: 'text',
                 text: reply.answer
@@ -53,8 +51,7 @@ class LinebotController < ApplicationController
             else
               message = {
                 type: 'text',
-                text: requestMessage + "は見つからないよ
-                「一覧」で確認した正しい番号を半角数字で送信してね。"
+                text: requestMessage + "は見つからないよ\r\n「一覧」で確認した正しい番号を半角数字で送信してね。"
               }
               response = client.reply_message(event['replyToken'], message)
             end
