@@ -45,6 +45,12 @@ class LinebotController < ApplicationController
             if reply
               message = {
                 type: 'text',
+                text: reply.title + "の詳細です。"
+              }
+              response = client.reply_message(event['replyToken'], message)
+
+              message = {
+                type: 'text',
                 text: reply.answer
               }
               response = client.reply_message(event['replyToken'], message)
