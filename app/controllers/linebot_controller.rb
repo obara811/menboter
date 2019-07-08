@@ -20,6 +20,8 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           log = Log.new(user_id: event.message['id'], text: event.message['text'])
           log.save
+          puts event.message.inspect
+          puts "@@@@@@@@@@@@@@"
           if event.message['text'] == "一覧"
 
             messages = Problem.all.order("id")
