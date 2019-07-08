@@ -1,7 +1,7 @@
 class LinebotController < ApplicationController
   protect_from_forgery :except => [:callback]
   def callback
-    puts "@@@@@@@@@@@@@@@@@@@@@"
+
     body = request.body.read
     
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -21,8 +21,10 @@ class LinebotController < ApplicationController
           log = Log.new(user_id: event.message['id'], text: event.message['text'])
           log.save
 
+          puts event.message.inspect
+          puts "@@@@@@@@@@@@@@"
           reMessage = event.message['text']
-          if event.message['text'] == "一覧"
+          if reMessage == "一覧"
 
             messages = Problem.all.order("id")
             reply=""
