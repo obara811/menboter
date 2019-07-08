@@ -52,7 +52,7 @@ class LinebotController < ApplicationController
             else
               message = {
                 type: 'text',
-                text: event.message['text'] + "は見つからないよ"
+                text: event.message['text'] + "は見つからないよ/n 調べたいものを見るには「一覧」と打ってみてね。"
               }
               response = client.reply_message(event['replyToken'], message)
             end
