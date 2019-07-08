@@ -11,7 +11,6 @@ class LinebotController < ApplicationController
 
     events = client.parse_events_from(body)
 
-
     events.each { |event|
       case event
       when Line::Bot::Event::Message
@@ -20,11 +19,11 @@ class LinebotController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           log = Log.new(user_id: event.message['id'], text: event.message['text'])
           log.save
-
+          puts "@@@@@@@@@@@@@@"
           puts event.message.inspect
           puts "@@@@@@@@@@@@@@"
-          reMessage = event.message['text']
-          if reMessage == "一覧"
+          requestMessage = event.message['text']
+          if requestMessage == "一覧"
 
             messages = Problem.all.order("id")
             reply=""
@@ -39,9 +38,9 @@ class LinebotController < ApplicationController
             response = client.reply_message(event['replyToken'], message)
             
           else
-            reply = Problem.find_by(id: reMessage)
+            reply = Problem.find_by(id: requestMessage)
             puts "#######################"
-            puts reply
+            puts reply.inspect
             puts "#######################"
             if reply
               message = {
@@ -52,8 +51,8 @@ class LinebotController < ApplicationController
             else
               message = {
                 type: 'text',
-                text: reMessage + "は見つからないよ
-                「一覧」と打って正しい番号を半角数字で送信してね。"
+                text: requestMessage + "は見つからないよ
+                「一覧」で確認した正しい番号を半角数字で送信してね。"
               }
               response = client.reply_message(event['replyToken'], message)
             end
