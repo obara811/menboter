@@ -43,11 +43,7 @@ class LinebotController < ApplicationController
             puts reply.inspect
             puts "#######################"
             if reply
-              message = {
-                type: 'text',
-                text: reply.title + "の詳細です。"
-              }
-              response = client.reply_message(event['replyToken'], message)
+
 
               message = {
                 type: 'text',
