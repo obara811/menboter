@@ -38,9 +38,11 @@ class LinebotController < ApplicationController
             }
             response = client.reply_message(event['replyToken'], message)
             
-          elsif
-            reply = Problem.find_by(id: event.message['text'])
+          else
+            reply = Problem.find_by(id: reMessage)
+            puts "#######################"
             puts reply
+            puts "#######################"
             if reply
               message = {
                 type: 'text',
