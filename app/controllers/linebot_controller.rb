@@ -52,8 +52,8 @@ class LinebotController < ApplicationController
             else
               message = {
                 type: 'text',
-                text: event.message['text'] + "は見つからないよ
-                調べたいものを見るには「一覧」と打ってみてね。"
+                text: reMessage + "は見つからないよ
+                「一覧」と打って正しい番号を半角数字で送信してね。"
               }
               response = client.reply_message(event['replyToken'], message)
             end
