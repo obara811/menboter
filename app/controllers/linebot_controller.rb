@@ -23,7 +23,7 @@ class LinebotController < ApplicationController
           puts event.message.inspect
 
           requestMessage = event.message['text']
-          if requestMessage == ("一覧" || "list")
+          if requestMessage == "一覧" || requestMessage == "list")
 
             messages = Problem.all.order("id")
             reply=""
