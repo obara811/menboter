@@ -21,7 +21,7 @@ class LinebotController < ApplicationController
           log.save
           puts "@@@@@@@@@@@@@@"
           puts event.message.inspect
-          puts "@@@@@@@@@@@@@@"
+
           requestMessage = event.message['text']
           if requestMessage == ("一覧" || "list")
 
