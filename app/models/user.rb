@@ -3,5 +3,5 @@ class User < ApplicationRecord
   #  and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable, :timeoutable, :trackable
-  enum admin: { admin: 0, general: 1 }
+  enum admin: { admin: 1, general: 0 }
 end
