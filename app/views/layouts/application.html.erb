@@ -30,7 +30,7 @@
           
           <% if user_signed_in? %>
             <ul class="uk-navbar-nav">
-              <li><%= current_user.name %>さん</li>
+              <li><a href="#"><%= current_user.name %>さん</a></li>
               <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
             </ul>
           <% else %>
