@@ -26,10 +26,12 @@
 
       <div id="menu<%= word.id %>" style="display:none;clear:both;">
         <%= form_with model: word, local: true do |f| %>
-          <div class="uk-margin">
-            <%= f.label :title %>
-            <%= f.text_field :title, class: "uk-input" %>
-          </div>
+          <% if current_user.admin? %>
+            <div class="uk-margin">
+              <%= f.label :title %>
+              <%= f.text_field :title, class: "uk-input" %>
+            </div>
+          <% end %>
 
           <div class="uk-margin">
             <%= f.label :answer %>
