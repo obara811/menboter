@@ -1,5 +1,6 @@
 class ProblemsController < ApplicationController
-  #before_action correct_user, only: [:create,update,destroy]
+  before_action :correct_user, only: [:create, :update, :destroy]
+
   def index
     @problem = Problem.new
     @problems = Problem.all.order(created_at: :desc)
