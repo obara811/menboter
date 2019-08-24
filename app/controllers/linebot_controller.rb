@@ -39,9 +39,7 @@ class LinebotController < ApplicationController
             
           else
             reply = Problem.find_by(id: requestMessage)
-            puts "#######################"
-            puts reply.inspect
-            puts "#######################"
+
             if reply
               message = {
                 type: 'text',

@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+  before_action correct_user, only: [:create,update,destroy]
    def index
     @problem = Problem.new
     @problems = Problem.all.order(created_at: :desc)
@@ -32,5 +33,9 @@ class ProblemsController < ApplicationController
   private
   def problem_params
     params.require(:problem).permit(:title,:answer)
+  end
+
+  def correct_user
+    redirect_to root_url unless current_user.admin?
   end
 end
