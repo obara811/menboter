@@ -7,6 +7,7 @@
        %>
     </h2>
     <div class="uk-alert-danger" uk-alert>
+      <a class="uk-alert-close" uk-close></a>
       <ul>    
         <% resource.errors.full_messages.each do |message| %>
           <li><%= message %></li>
