@@ -1,41 +1,47 @@
-<%= form_with model: @problem, local: true do |f| %>
-  <div class="uk-margin">
-    <%= f.label :title, class: "uk-label" %>
-  　<%= f.text_field :title, class: "uk-input" %>
-  </div>
-  <div class="uk-margin">
-    <%= f.label :answer, class: "uk-label" %>
-    <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
-  </div>
-  <div class="uk-margin">
-    <%= f.button "作成", class: "uk-button uk-button-secondary uk-width-1-1" %>
-  </div>
-<% end %>
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= form_with model: @problem, local: true do |f| %>
+      
+      <div class="uk-margin">
+        <%= f.label :title, class: "uk-label" %>
+      　<%= f.text_field :title, class: "uk-input" %>
+      </div>
+      <div class="uk-margin">
+        <%= f.label :answer, class: "uk-label" %>
+        <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
+      </div>
+      <div class="uk-margin">
+        <%= f.button "作成", class: "uk-button uk-button-secondary uk-width-1-1" %>
+      </div>
+    <% end %>
+  <% end %>
 
-<% @problems.each do |word| %>
-  <div class="wordbox">
-    <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
-      <div style="cursor:pointer;">
-        <span class="wordTitle">▼ <%= word.title %></span>:
+  <% @problems.each do |word| %>
+    <div class="wordbox">
+      <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
+        <div style="cursor:pointer;">
+          <span class="wordTitle">▼ <%= word.title %></span>:
+        </div>
+      </div>
+
+      <div id="menu<%= word.id %>" style="display:none;clear:both;">
+        <%= form_with model: word, local: true do |f| %>
+          <div class="uk-margin">
+            <%= f.label :title %>
+            <%= f.text_field :title, class: "uk-input" %>
+          </div>
+
+          <div class="uk-margin">
+            <%= f.label :answer %>
+            <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
+          </div>
+          <% if current_user.admin? %>
+            <%= f.button "編集", class: "uk-button uk-button-default uk-button-danger" %>
+          <% end %>
+        <% end %>
+        <%#= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
       </div>
     </div>
-
-    <div id="menu<%= word.id %>" style="display:none;clear:both;">
-      <%= form_with model: word, local: true do |f| %>
-        <div class="uk-margin">
-          <%= f.label :title %>
-          <%= f.text_field :title, class: "uk-input" %>
-        </div>
-
-        <div class="uk-margin">
-          <%= f.label :answer %>
-          <%= f.text_area :answer, class: "uk-textarea", rows: 10 %>
-        </div>
-        <%= f.button "編集", class: "uk-button uk-button-default uk-button-danger" %>
-      <% end %>
-      <%#= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
-    </div>
-  </div>
+  <% end %>
 <% end %>
-
 <%= image_tag("/images/lineqr.png") %>
