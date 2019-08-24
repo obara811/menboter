@@ -69,13 +69,16 @@
       </div>
 
     </nav>
-
+    
+    
     <div class="uk-container">
+      <% if  notice || alert %> 
       <div class="uk-alert-primary" uk-alert>
         <a class="uk-alert-close" uk-close></a>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
-      </div> 
+      </div>
+      <% end %> 
       <%= yield %>
     </div>
   </body>
