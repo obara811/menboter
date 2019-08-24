@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
+
     <!-- UIkit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
@@ -19,7 +19,7 @@
 
   <body>
 
-    <nav class="uk-navbar-container" uk-navbar>
+    <nav class="uk-section-primary" uk-navbar>
     
       <div class="uk-navbar-left">
         <ul class="uk-navbar-nav">
@@ -53,14 +53,14 @@
               <li><%= link_to "signup", new_user_registration_path %></li>
               <li>
                   <a href="#">Options</a>
-                  <div class="uk-navbar-dropdown">
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
                       <ul class="uk-nav uk-navbar-dropdown-nav">
 
-                        <li><%= link_to "Forgot your password?", new_password_path(resource_name) %></li>
+                        <li><%= link_to "Forgot your password?", new_password_path(resource_name),class: "uk-text-warning"  %></li>
 
-                        <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %></li>
+                        <li><%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name),class: "uk-text-success" %></li>
 
-                        <li><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name) %></li>
+                        <li><%= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name),class: "uk-text-danger"  %></li>
                       </ul>
                   </div>
               </li>
