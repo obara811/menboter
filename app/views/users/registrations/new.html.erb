@@ -4,8 +4,8 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="uk-margin">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autofocus: true, autocomplete: "your slackname", class: "uk-input uk-form-small" %>
+    <%= f.label :name %>(like mentor-xxxx)<br />
+    <%= f.text_field :name, autofocus: true, autocomplete: "your slackname", class: "uk-input uk-form-small",placeholder: "mentor-xxxx" %>
   </div>
 
   <div class="uk-margin">
