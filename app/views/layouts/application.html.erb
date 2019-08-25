@@ -32,7 +32,16 @@
           
           <% if user_signed_in? %>
             <ul class="uk-navbar-nav">
-              <li><a href="#" class="uk-text-capitalize uk-text-success"><%= current_user.name %>さん</a></li>
+              <li>
+                <a href="#" class="uk-text-capitalize uk-text-success"><%= current_user.name %>さん</a>
+                <% if current_user.admin? %>
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><%= link_to "users", users_path ,class: "uk-text-warning"  %></li>
+                    </ul>
+                  </div>
+                <% end %>
+              </li>
               <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
             </ul>
           <% else %>
