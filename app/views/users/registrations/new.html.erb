@@ -4,8 +4,9 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="uk-margin">
-    <%= f.label :name %>(like mentor-xxxx)<br />
+    <%= f.label :name %>( like mentor-xxxx )<br />
     <%= f.text_field :name, autofocus: true, autocomplete: "your slackname", class: "uk-input uk-form-small",placeholder: "mentor-xxxx" %>
+    * If it is not in the form of "mentor-xxx", the account may be deleted.
   </div>
 
   <div class="uk-margin">
