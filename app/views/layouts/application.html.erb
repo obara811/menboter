@@ -36,14 +36,7 @@
               <li><%= link_to "logout", destroy_user_session_path, method: :delete %></li>
             </ul>
           <% else %>
-            <div class="uk-navbar-item">
-              <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-                <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input uk-form-width-small", placeholder: "email" %>
-                <%= f.password_field :password, autocomplete: "current-password", class: "uk-input uk-form-width-small", placeholder: "password" %>
-                <%= f.submit "Log in", class: "uk-button uk-button-default" %>
 
-              <% end %>
-            </div>
             <ul class="uk-navbar-nav">
               <li><%= link_to "signup", new_user_registration_path %></li>
               <li>

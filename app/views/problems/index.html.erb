@@ -45,5 +45,31 @@
       </div>
     </div>
   <% end %>
+<% else %>
+
+  <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+    <div class="uk-margin">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input uk-form-small" %>
+    </div>
+
+    <div class="uk-margin">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "uk-input uk-form-small" %>
+    </div>
+
+    <% if devise_mapping.rememberable? %>
+      <div class="uk-margin">
+        <%= f.check_box :remember_me %>
+        <%= f.label :remember_me %>
+      </div>
+    <% end %>
+
+    <div class="uk-margin">
+      <%= f.submit "Log in", class: "uk-button uk-button-primary" %>
+    </div>
+  <% end %>
+
 <% end %>
+<h2>LineBot版はこちら</h2>
 <%= image_tag("/images/lineqr.png") %>
