@@ -21,11 +21,11 @@
       <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
         <div style="cursor:pointer;">
           <span class="wordTitle">
-            ▼ <%= word.title %>
+            ▼ <%= word.title %>:
               <% if Time.current.ago(3.days) <= word.updated_at  %>
-                <span style="color: #f55;">up</span>
+                <span style="color: #f55;"><span class="uk-margin-small-right" uk-icon=" bell"></span> up</span>
               <% end %>
-          </span>:
+          </span>
         </div>
       </div>
 
