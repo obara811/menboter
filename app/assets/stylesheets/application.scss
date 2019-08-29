@@ -25,18 +25,15 @@
     border: 1px solid #b33;
 }
 
-.up{
-
+.up::after{
    display        : inline-block;       
    content        : "NEW";             
    color          : #ff0000;            
    font-weight    : bold;               
-   font-size      : 7pt;                
+   font-size      : 10pt;                
    vertical-align : middle;             
    margin-left    : 5px;               
    animation      : anime1 1.5s infinite alternate; 
-
-
 }
 
 @keyframes anime1{                 
