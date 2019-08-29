@@ -20,7 +20,12 @@
     <div class="wordbox">
       <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
         <div style="cursor:pointer;">
-          <span class="wordTitle">▼ <%= word.title %></span>:
+          <span class="wordTitle">
+            ▼ <%= word.title %>
+              <% if Time.current.ago(3.days) <= word.updated_at  %>
+                <span stykle="color: #f55;">up</span>
+              <% end %>
+          </span>:
         </div>
       </div>
 
@@ -31,7 +36,7 @@
               <%= f.label :title %>
               <%= f.text_field :title, class: "uk-input" %>
             </div>
-          <% end %>
+          <% end %> 
 
           <div class="uk-margin">
             <%= f.label :answer %>
