@@ -23,7 +23,7 @@
           <span class="wordTitle">
             ▼ <%= word.title %>:
               <% if Time.current.ago(3.days) <= word.updated_at  %>
-                <b style="color: #f55;"><span class="uk-margin-small-right" uk-icon="bell"></span>up</b>
+                <span class="up">up</span>
               <% end %>
           </span>
         </div>
