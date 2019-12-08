@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_24_135851) do
+ActiveRecord::Schema.define(version: 2019_12_08_110639) do
 
   create_table "logs", force: :cascade do |t|
     t.string "user_id"
@@ -22,6 +22,24 @@ ActiveRecord::Schema.define(version: 2019_08_24_135851) do
   create_table "problems", force: :cascade do |t|
     t.string "title"
     t.text "answer"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_problems_on_user_id"
+  end
+
+  create_table "tag_problems", force: :cascade do |t|
+    t.integer "tag_id"
+    t.integer "problem_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["problem_id", "tag_id"], name: "index_tag_problems_on_problem_id_and_tag_id", unique: true
+    t.index ["problem_id"], name: "index_tag_problems_on_problem_id"
+    t.index ["tag_id"], name: "index_tag_problems_on_tag_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

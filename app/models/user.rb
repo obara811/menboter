@@ -6,4 +6,5 @@ class User < ApplicationRecord
   enum admin: { admin: 1, general: 0 }
 
   validates :name, presence: true
+  has_many :problems
 end

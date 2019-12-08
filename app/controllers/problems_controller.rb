@@ -7,7 +7,7 @@ class ProblemsController < ApplicationController
   end
 
   def create
-    @problem = Problem.new(problem_params)
+    @problem = current_user.problems.build(problem_params)
     if @problem.save
       redirect_to root_url
     else
@@ -18,6 +18,7 @@ class ProblemsController < ApplicationController
 
   def update
     @problem = Problem.find(params[:id])
+    @problrm.user_id = current_user.id
     if @problem.update(problem_params)
       redirect_to root_url
     else
