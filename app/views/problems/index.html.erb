@@ -43,7 +43,7 @@
             <%= f.text_area :answer, class: "uk-textarea", rows: 15 %>
           </div>
           <div class="uk-margin">
-            最終編集者: <%= word.user.name %> 
+            最終編集者: <%= word.user.name if word.user.present? %> 
           </div> 
           <% if current_user.admin? %>
             <%= f.button "編集", class: "uk-button uk-button-default uk-button-danger" %>
