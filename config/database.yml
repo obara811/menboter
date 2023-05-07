@@ -80,7 +80,9 @@ test:
 # for a full overview on how database connection configuration can be specified.
 #
 production:
-  <<: *default
-  database: menboter2_production
-  username: menboter2
-  password: <%= ENV["MENBOTER2_DATABASE_PASSWORD"] %>
+  adapter: postgresql
+  pool: 5
+  encoding: unicode
+  database: menboter_production
+  username: techadvise
+  password: <%= ENV['IMAGEUPLOAD_DATABASE_PASSWORD'] %>>
