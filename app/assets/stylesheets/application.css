@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+ .up::after{
+    display        : inline-block;       
+    content        : "up";             
+    color          : #ff0000;            
+    font-weight    : bold;               
+    font-size      : 10pt;                
+    vertical-align : middle;             
+    margin-left    : 5px;               
+    animation      : anime1 1.5s infinite alternate; 
+ }
+ 
+ @keyframes anime1{                 
+    50% { transform: rotateX(360deg) }
+   100% { transform: rotateX(360deg) }
+ }
