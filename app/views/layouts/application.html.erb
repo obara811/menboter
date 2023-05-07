@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Menboter</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <!-- UIkit CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/css/uikit.min.css" />
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
+    <!-- UIkit JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.1.5/js/uikit-icons.min.js"></script>
+
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+
+    <nav class="uk-section-primary" uk-navbar>
+    
+      <div class="uk-navbar-left">
+        <ul class="uk-navbar-nav">
+          <li class="uk-active"><a href="/">Menboter</a></li>
+        </ul>
+      </div>
+
+      <div class="uk-navbar-right">
+
+          
+          <% if logged_in? %>
+            <ul class="uk-navbar-nav">
+              <li>
+                <a href="#" class="uk-text-capitalize uk-text-success"><%= current_user.name %>さん</a>
+                <% if current_user.admin? %>
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                    <ul class="uk-nav uk-navbar-dropdown-nav">
+                      <li><%= link_to "users", users_path ,class: "uk-text-warning"  %></li>
+                    </ul>
+                  </div>
+                <% end %>
+              </li>
+              <li><%= link_to "logout", logout_path, data: { turbo_method: :delete } %></li>
+            </ul>
+          <% else %>
+            <ul class="uk-navbar-nav">
+              <li><%= link_to "signup", signup_path %></li>
+              <li>
+                  <a href="#">Options</a>
+                  <div class="uk-navbar-dropdown uk-navbar-dropdown-width-2">
+                      <ul class="uk-nav uk-navbar-dropdown-nav">
+
+                        <li><%#= link_to "Forgot your password?", new_password_path(resource_name),class: "uk-text-warning"  %></li>
+
+                        <li><%#= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name),class: "uk-text-success" %></li>
+
+                        <li><%#= link_to "Didn't receive unlock instructions?", new_unlock_path(resource_name),class: "uk-text-danger"  %></li>
+                      </ul>
+                  </div>
+              </li>
+            </ul>
+
+          <% end %>
+  
+      </div>
+
+    </nav>
+    
+    
+    <div class="uk-container">
+      <% if flash.present? %>
+          <% flash.each do |message_type, message| %>
+            <div class="uk-alert-<%= message_type %>" uk-alert>
+              <a class="uk-alert-close" uk-close></a>
+              <p><%= message %></p>
+            </div>
+          <% end %>
+      <% end %>
+
+      <%= yield %>
+    </div>
+  </body>
+</html>

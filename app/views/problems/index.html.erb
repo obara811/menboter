@@ -1,0 +1,85 @@
+<% if logged_in? %>
+  <% if current_user.admin? %>
+    <%= form_with model: @problem, local: true do |f| %>
+      
+      <div class="uk-margin">
+        <%= f.label :title, class: "uk-label" %>
+        <%= f.text_field :title, class: "uk-input" %>
+      </div>
+      <div class="uk-margin">
+        <%= f.label :answer, class: "uk-label" %>
+        <%= f.rich_text_area :answer, class: "uk-textarea", rows: 10 %>
+      </div>
+      <div class="uk-margin">
+        <%= f.button "作成", class: "uk-button uk-button-secondary uk-width-1-1" %>
+      </div>
+    <% end %>
+  <% end %>
+
+  <table class="uk-table uk-table-striped">
+    <% @problems.each do |word| %>
+        <tr>
+            <td>
+                <div class="wordbox">
+                <div onclick="obj=document.getElementById('menu<%= word.id %>').style; obj.display=(obj.display=='none')?'block':'none';">
+                    <div style="cursor:pointer;">
+                    <span class="wordTitle">
+                        ▼ <%= word.title %>:
+                        <% if Time.current.ago(3.days) <= word.updated_at  %>
+                            <span class="up"></span>
+                        <% end %>
+                    </span>
+                    </div>
+                </div>
+
+                <div id="menu<%= word.id %>" style="display:none;clear:both;">
+                    <%= form_with model: word, local: true do |f| %>
+                    <% if current_user.admin? %>
+                        <div class="uk-margin">
+                        <%= f.label :title %>
+                        <%= f.text_field :title, class: "uk-input" %>
+                        </div>
+                    <% end %> 
+
+                    <div class="uk-margin">
+                        <%= f.label :answer %>
+                        <%= f.rich_text_area :answer, class: "uk-textarea", rows: 15 %>
+                    </div>
+                    <div class="uk-margin">
+                        最終編集者: <%= word.user.name if word.user.present? %> 
+                    </div> 
+                    <% if current_user.admin? %>
+                        <%= f.button "クリックすると編集されます。", class: "uk-button uk-button-default uk-button-danger" %>
+                    <% end %>
+                    <% end %>
+                    <%#= link_to "削除", word, method: :delete, data: { confirm: "You sure?" }, class: "uk-button uk-button-danger" %>
+                </div>
+                </div>
+        </td>
+      </tr>
+    <% end %>
+
+  </table>
+
+<% else %>
+
+  <%= form_with(url: login_path, scope: :session) do |f| %>
+    <div class="uk-margin">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "uk-input uk-form-small" %>
+    </div>
+
+    <div class="uk-margin">
+      <%= f.label :password %><br />
+      <%= f.password_field :password, autocomplete: "current-password", class: "uk-input uk-form-small" %>
+    </div>
+
+
+    <div class="uk-margin">
+      <%= f.submit "Log in", class: "uk-button uk-button-primary" %>
+    </div>
+  <% end %>
+
+<% end %>
+
+
